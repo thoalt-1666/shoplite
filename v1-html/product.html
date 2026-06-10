@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bàn phím cơ Keychron K2 — ShopLite">
+    <title>Keychron K2 — ShopLite</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="logo" href="index.html">
+          Shop<span class="logo__accent">Lite</span>
+        </a>
+
+        <form class="search" role="search" action="#" onsubmit="return false">
+          <label class="visually-hidden" for="search-input">Tìm kiếm sản phẩm</label>
+          <input
+            id="search-input"
+            class="search__input"
+            type="search"
+            placeholder="Tìm sản phẩm..."
+          >
+          <button class="search__button" type="submit" aria-label="Tìm kiếm">🔍</button>
+        </form>
+
+        <a class="cart" href="#" aria-label="Giỏ hàng, 3 sản phẩm">
+          <span class="cart__icon" aria-hidden="true">🛒</span>
+          <span class="cart__badge">3</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <ol class="breadcrumb__list">
+          <li><a href="index.html">Sản phẩm</a></li>
+          <li aria-current="page">Keychron K2</li>
+        </ol>
+      </nav>
+
+      <div class="product-detail">
+        <!-- Product image -->
+        <div class="product-detail__image" aria-hidden="true"></div>
+
+        <!-- Product info -->
+        <div class="product-detail__info">
+          <h1 class="product-detail__name">Bàn phím cơ Keychron K2</h1>
+          <p class="product-detail__price">1.890.000₫</p>
+          <p class="product-detail__desc">
+            Bàn phím cơ compact 75%, kết nối đa thiết bị qua Bluetooth hoặc dây USB-C.
+            Switch Gateron Brown cho cảm giác gõ nhẹ nhàng, có LED RGB và khung nhôm chắc chắn.
+            Tương thích Windows và macOS.
+          </p>
+
+          <ul class="product-detail__specs">
+            <li><span>Layout:</span> 75% (84 phím)</li>
+            <li><span>Switch:</span> Gateron Brown</li>
+            <li><span>Kết nối:</span> Bluetooth 5.1 / USB-C</li>
+            <li><span>Bảo hành:</span> 12 tháng</li>
+          </ul>
+
+          <button class="product-detail__button" type="button">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__about">
+          <p class="logo logo--small">Shop<span class="logo__accent">Lite</span></p>
+          <p class="site-footer__desc">
+            Cửa hàng trực tuyến đơn giản — dự án học Front-End.
+          </p>
+        </div>
+
+        <nav class="site-footer__nav" aria-label="Liên kết chân trang">
+          <h2 class="site-footer__heading">Về chúng tôi</h2>
+          <ul class="site-footer__links">
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">Chính sách</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__nav" aria-label="Hỗ trợ khách hàng">
+          <h2 class="site-footer__heading">Hỗ trợ</h2>
+          <ul class="site-footer__links">
+            <li><a href="#">Câu hỏi thường gặp</a></li>
+            <li><a href="#">Vận chuyển</a></li>
+            <li><a href="#">Đổi trả</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <p class="site-footer__copyright">© 2026 ShopLite. Dự án học tập.</p>
+    </footer>
+  </body>
+</html>
