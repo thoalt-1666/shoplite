@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="ShopLite">
+    <title>ShopLite — Sản phẩm</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <!-- HEADER -->
+    <header class="site-header">
+      <div class="container site-header__inner">
+        <a class="logo" href="index.html">
+          Shop<span class="logo__accent">Lite</span>
+        </a>
+
+        <form class="search" role="search" action="#" onsubmit="return false">
+          <label class="visually-hidden" for="search-input">Tìm kiếm sản phẩm</label>
+          <input
+            id="search-input"
+            class="search__input"
+            type="search"
+            placeholder="Tìm sản phẩm..."
+          >
+          <button class="search__button" type="submit" aria-label="Tìm kiếm">🔍</button>
+        </form>
+
+        <a class="cart" href="#" aria-label="Giỏ hàng, 3 sản phẩm">
+          <span class="cart__icon" aria-hidden="true">🛒</span>
+          <span class="cart__badge">3</span>
+        </a>
+      </div>
+    </header>
+
+    <!-- MAIN -->
+    <main class="container">
+      <section class="products" aria-labelledby="products-title">
+        <h1 id="products-title" class="products__title">Sản phẩm</h1>
+
+        <div class="products__grid">
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true"></div>
+            <h2 class="product-card__name">Tên sản phẩm</h2>
+            <p class="product-card__price">0₫</p>
+            <button class="product-card__button" type="button">Thêm vào giỏ</button>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true"></div>
+            <h2 class="product-card__name">Tên sản phẩm</h2>
+            <p class="product-card__price">0₫</p>
+            <button class="product-card__button" type="button">Thêm vào giỏ</button>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true"></div>
+            <h2 class="product-card__name">Tên sản phẩm</h2>
+            <p class="product-card__price">0₫</p>
+            <button class="product-card__button" type="button">Thêm vào giỏ</button>
+          </article>
+
+          <article class="product-card">
+            <div class="product-card__image" aria-hidden="true"></div>
+            <h2 class="product-card__name">Tên sản phẩm</h2>
+            <p class="product-card__price">0₫</p>
+            <button class="product-card__button" type="button">Thêm vào giỏ</button>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+      <div class="container site-footer__inner">
+        <div class="site-footer__about">
+          <p class="logo logo--small">Shop<span class="logo__accent">Lite</span></p>
+          <p class="site-footer__desc">
+            Cửa hàng trực tuyến đơn giản — dự án học Front-End.
+          </p>
+        </div>
+
+        <nav class="site-footer__nav" aria-label="Liên kết chân trang">
+          <h2 class="site-footer__heading">Về chúng tôi</h2>
+          <ul class="site-footer__links">
+            <li><a href="#">Giới thiệu</a></li>
+            <li><a href="#">Liên hệ</a></li>
+            <li><a href="#">Chính sách</a></li>
+          </ul>
+        </nav>
+
+        <nav class="site-footer__nav" aria-label="Hỗ trợ khách hàng">
+          <h2 class="site-footer__heading">Hỗ trợ</h2>
+          <ul class="site-footer__links">
+            <li><a href="#">Câu hỏi thường gặp</a></li>
+            <li><a href="#">Vận chuyển</a></li>
+            <li><a href="#">Đổi trả</a></li>
+          </ul>
+        </nav>
+      </div>
+
+      <p class="site-footer__copyright">© 2026 ShopLite. Dự án học tập.</p>
+    </footer>
+  </body>
+</html>
