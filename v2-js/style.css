@@ -194,6 +194,13 @@ main.container {
   margin-bottom: var(--space-6);
 }
 
+.products__empty {
+  color: var(--color-muted);
+  grid-column: 1 / -1;
+  padding-block: var(--space-8);
+  text-align: center;
+}
+
 .products__grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
