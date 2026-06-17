@@ -1,6 +1,3 @@
-// Sample product data — mirrors DummyJSON shape (id, title, price, thumbnail, category, rating)
-// Used as a fake data source before switching to the real API in day 3.
-
 export const products = [
   {
     id: 1,
