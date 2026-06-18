@@ -40,55 +40,8 @@
       <div class="cart-layout">
         <!-- Cart items -->
         <section aria-label="Danh sách sản phẩm">
-          <h2 class="cart-items__title">Sản phẩm (3)</h2>
-
-          <div class="cart-item">
-            <div class="cart-item__image" aria-hidden="true"></div>
-            <div class="cart-item__info">
-              <p class="cart-item__name">Bàn phím cơ Keychron K2</p>
-              <p class="cart-item__price">1.890.000₫</p>
-              <div class="cart-item__qty">
-                <label for="qty-1" class="visually-hidden">Số lượng</label>
-                <input id="qty-1" class="cart-item__qty-input" type="number" value="1" min="1">
-              </div>
-            </div>
-            <div class="cart-item__actions">
-              <span class="cart-item__subtotal">1.890.000₫</span>
-              <button class="cart-item__remove" type="button">Xóa</button>
-            </div>
-          </div>
-
-          <div class="cart-item">
-            <div class="cart-item__image" aria-hidden="true"></div>
-            <div class="cart-item__info">
-              <p class="cart-item__name">Chuột Logitech MX Master 3</p>
-              <p class="cart-item__price">2.350.000₫</p>
-              <div class="cart-item__qty">
-                <label for="qty-2" class="visually-hidden">Số lượng</label>
-                <input id="qty-2" class="cart-item__qty-input" type="number" value="1" min="1">
-              </div>
-            </div>
-            <div class="cart-item__actions">
-              <span class="cart-item__subtotal">2.350.000₫</span>
-              <button class="cart-item__remove" type="button">Xóa</button>
-            </div>
-          </div>
-
-          <div class="cart-item">
-            <div class="cart-item__image" aria-hidden="true"></div>
-            <div class="cart-item__info">
-              <p class="cart-item__name">Tai nghe Sony WH-1000XM5</p>
-              <p class="cart-item__price">7.490.000₫</p>
-              <div class="cart-item__qty">
-                <label for="qty-3" class="visually-hidden">Số lượng</label>
-                <input id="qty-3" class="cart-item__qty-input" type="number" value="1" min="1">
-              </div>
-            </div>
-            <div class="cart-item__actions">
-              <span class="cart-item__subtotal">7.490.000₫</span>
-              <button class="cart-item__remove" type="button">Xóa</button>
-            </div>
-          </div>
+          <h2 class="cart-items__title">Sản phẩm</h2>
+          <div class="cart-items__list"></div>
         </section>
 
         <!-- Order summary -->
@@ -98,15 +51,15 @@
           <div class="cart-summary__rows">
             <div class="cart-summary__row">
               <span>Tạm tính</span>
-              <span>11.730.000₫</span>
+              <span class="cart-summary__subtotal">$0.00</span>
             </div>
             <div class="cart-summary__row">
               <span>Phí vận chuyển</span>
-              <span>30.000₫</span>
+              <span class="cart-summary__shipping">$0.00</span>
             </div>
             <div class="cart-summary__row cart-summary__row--total">
               <span>Tổng cộng</span>
-              <span>11.760.000₫</span>
+              <span class="cart-summary__total">$0.00</span>
             </div>
           </div>
 
@@ -146,5 +99,6 @@
 
       <p class="site-footer__copyright">© 2026 ShopLite. Dự án học tập.</p>
     </footer>
+    <script type="module" src="cart-page.js"></script>
   </body>
 </html>
