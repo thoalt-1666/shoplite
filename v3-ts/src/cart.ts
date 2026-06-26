@@ -1,24 +1,28 @@
-import type { CartItem } from "./types";
+import type { CartItem, Product } from "./types";
 
 const CART_KEY = "shoplite_cart";
 
 export function getCart(): CartItem[] {
-  return JSON.parse(localStorage.getItem(CART_KEY) ?? "[]");
+  const raw = localStorage.getItem(CART_KEY);
+  if (!raw) return [];
+  try {
+    return JSON.parse(raw) as CartItem[];
+  } catch {
+    return [];
+  }
 }
 
 function saveCart(cart: CartItem[]): void {
   localStorage.setItem(CART_KEY, JSON.stringify(cart));
 }
 
-type CartInput = Pick<CartItem, "id" | "title" | "price" | "thumbnail">;
-
-export function addToCart(product: CartInput): void {
+export function addToCart(product: Product, quantity = 1): void {
   const cart = getCart();
   const existing = cart.find((item) => item.id === product.id);
   if (existing) {
-    existing.quantity += 1;
+    existing.quantity += quantity;
   } else {
-    cart.push({ ...product, quantity: 1 } as CartItem);
+    cart.push({ ...product, quantity });
   }
   saveCart(cart);
 }

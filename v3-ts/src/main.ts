@@ -1,15 +1,8 @@
 import "./style.css";
 import type { Product } from "./types";
+import { fetchProducts, type ProductListItem } from "./api";
 import { filterByKeyword, formatPrice } from "./products";
 import { addToCart, updateBadge } from "./cart";
-
-const API =
-  "https://dummyjson.com/products?limit=20&select=id,title,price,thumbnail,category,rating";
-
-type ProductListItem = Pick<
-  Product,
-  "id" | "title" | "price" | "thumbnail" | "category" | "rating"
->;
 
 const grid = document.querySelector<HTMLDivElement>(".products__grid")!;
 const searchInput = document.querySelector<HTMLInputElement>("#search-input")!;
@@ -56,15 +49,24 @@ function renderError(message: string): void {
 async function loadProducts(): Promise<void> {
   renderSkeleton();
   try {
-    const res = await fetch(API);
-    if (!res.ok) throw new Error(`Lỗi ${res.status}`);
-    const data: { products: ProductListItem[] } = await res.json();
-    allProducts = data.products;
+    allProducts = await fetchProducts();
     renderGrid(allProducts);
   } catch (err) {
     renderError("Không thể tải sản phẩm. Vui lòng thử lại.");
     console.error(err);
   }
+}
+
+// List page only fetches a subset of Product fields (via `select=`),
+// so fill the rest with safe defaults before storing a full CartItem.
+function toFullProduct(item: ProductListItem): Product {
+  return {
+    ...item,
+    description: "",
+    discountPercentage: 0,
+    stock: 0,
+    images: [item.thumbnail],
+  };
 }
 
 searchInput.addEventListener("input", (e) => {
@@ -84,7 +86,7 @@ grid.addEventListener("click", (e) => {
   const product = allProducts.find((p) => p.id === id);
   if (!product) return;
 
-  addToCart(product);
+  addToCart(toFullProduct(product));
   updateBadge();
 
   btn.textContent = "✓ Đã thêm";

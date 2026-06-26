@@ -1,10 +1,10 @@
 import "./style.css";
 import type { Product } from "./types";
+import { fetchProduct } from "./api";
 import { addToCart, updateBadge } from "./cart";
 import { formatPrice } from "./products";
 
 const id = new URLSearchParams(location.search).get("id");
-const API = `https://dummyjson.com/products/${id}`;
 
 function renderProduct(p: Product): void {
   document.title = `${p.title} — ShopLite`;
@@ -27,7 +27,7 @@ function renderProduct(p: Product): void {
 
   const btn = document.querySelector<HTMLButtonElement>(".product-detail__button")!;
   btn.addEventListener("click", () => {
-    addToCart({ id: p.id, title: p.title, price: p.price, thumbnail: p.thumbnail });
+    addToCart(p);
     updateBadge();
     btn.textContent = "✓ Đã thêm vào giỏ";
     btn.disabled = true;
@@ -52,9 +52,7 @@ async function loadProduct(): Promise<void> {
   document.querySelector(".product-detail__name")!.textContent = "Đang tải...";
 
   try {
-    const res = await fetch(API);
-    if (!res.ok) throw new Error(`Lỗi ${res.status}`);
-    const product: Product = await res.json();
+    const product = await fetchProduct(Number(id));
     renderProduct(product);
   } catch (err) {
     renderError();
