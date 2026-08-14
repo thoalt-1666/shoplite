@@ -1,24 +1,89 @@
+import { useState } from "react";
 import { Header } from "./components/Header";
 import { ProductList } from "./components/ProductList";
+import { CartPanel } from "./components/CartPanel";
+import { LoginForm } from "./components/LoginForm";
+import { ContactForm } from "./components/ContactForm";
 import { Footer } from "./components/Footer";
 import { products } from "./data";
-import type { ProductListItem } from "./types";
+import { filterByKeyword } from "./products";
+import { addItem, removeItem, setQty, getTotalQty } from "./cart";
+import type { CartItem, ProductListItem } from "./types";
+
+type Tab = "login" | "contact";
 
 export default function App() {
-  // No state yet on day 1: "Add to cart" only logs to the console.
+  // State lifted here because SearchBar (in Header) and ProductList both need it.
+  const [query, setQuery] = useState("");
+  const [cart, setCart] = useState<CartItem[]>([]);
+  const [tab, setTab] = useState<Tab>("login");
+
+  // Derived value: no extra state, recomputed on every render.
+  const visibleProducts = filterByKeyword(products, query);
+
+  // Updater form: build the next cart from the previous one, never mutate it.
   function handleAddToCart(product: ProductListItem) {
-    console.log("Thêm vào giỏ:", product.title);
+    setCart((prev) => addItem(prev, product));
+  }
+
+  function handleChangeQty(id: number, qty: number) {
+    setCart((prev) => setQty(prev, id, qty));
+  }
+
+  function handleRemove(id: number) {
+    setCart((prev) => removeItem(prev, id));
   }
 
   return (
     <div className="flex min-h-screen flex-col bg-slate-50">
-      <Header cartCount={3} />
+      <Header
+        query={query}
+        onQueryChange={setQuery}
+        cartCount={getTotalQty(cart)}
+      />
 
       <main className="mx-auto w-full max-w-6xl flex-1 px-4 py-6 md:py-8">
-        <h1 className="mb-4 text-2xl font-bold text-slate-900 md:mb-6 md:text-3xl">
-          Sản phẩm
-        </h1>
-        <ProductList products={products} onAddToCart={handleAddToCart} />
+        <div className="mb-4 flex items-baseline justify-between md:mb-6">
+          <h1 className="text-2xl font-bold text-slate-900 md:text-3xl">
+            Sản phẩm
+          </h1>
+          {query && (
+            <p className="text-sm text-slate-500">
+              {visibleProducts.length} kết quả cho “{query}”
+            </p>
+          )}
+        </div>
+
+        <ProductList products={visibleProducts} onAddToCart={handleAddToCart} />
+
+        <CartPanel
+          items={cart}
+          onChangeQty={handleChangeQty}
+          onRemove={handleRemove}
+        />
+
+        <section className="mt-10 max-w-md rounded-xl border border-slate-200 bg-white p-4 md:p-6">
+          <div className="mb-4 flex gap-2" role="tablist">
+            {(["login", "contact"] as const).map((value) => (
+              <button
+                key={value}
+                type="button"
+                role="tab"
+                aria-selected={tab === value}
+                onClick={() => setTab(value)}
+                className={
+                  tab === value
+                    ? "rounded-lg bg-indigo-600 px-3 py-1.5 text-sm font-semibold text-white"
+                    : "rounded-lg px-3 py-1.5 text-sm font-medium text-slate-600 hover:bg-slate-100"
+                }
+              >
+                {value === "login" ? "Đăng nhập" : "Liên hệ"}
+              </button>
+            ))}
+          </div>
+
+          {tab === "login" ? <LoginForm /> : <ContactForm />}
+        </section>
       </main>
 
       <Footer />
