@@ -5,14 +5,24 @@ interface ProductCardProps {
   product: ProductListItem;
   /** The parent decides what happens on click — the child just reports the event up. */
   onAddToCart?: (product: ProductListItem) => void;
+  onSelect?: (id: number) => void;
 }
 
-export function ProductCard({ product, onAddToCart }: ProductCardProps) {
-  const { title, price, thumbnail, category, rating } = product;
+export function ProductCard({
+  product,
+  onAddToCart,
+  onSelect,
+}: ProductCardProps) {
+  const { id, title, price, thumbnail, category, rating } = product;
 
   return (
     <article className="flex flex-col overflow-hidden rounded-xl border border-slate-200 bg-white transition hover:-translate-y-0.5 hover:shadow-lg">
-      <div className="grid aspect-square place-items-center bg-slate-100">
+      <button
+        type="button"
+        onClick={() => onSelect?.(id)}
+        className="grid aspect-square place-items-center bg-slate-100"
+        aria-label={`Xem chi tiết ${title}`}
+      >
         {thumbnail ? (
           <img
             src={thumbnail}
@@ -25,14 +35,20 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             📦
           </span>
         )}
-      </div>
+      </button>
 
       <div className="flex flex-1 flex-col gap-2 p-3 md:p-4">
         <p className="text-xs uppercase tracking-wide text-slate-400">
           {category}
         </p>
         <h2 className="line-clamp-2 text-sm font-medium text-slate-900 md:text-base">
-          {title}
+          <button
+            type="button"
+            onClick={() => onSelect?.(id)}
+            className="text-left hover:text-indigo-600"
+          >
+            {title}
+          </button>
         </h2>
 
         <p className="flex items-center gap-1 text-sm text-amber-600">

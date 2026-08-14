@@ -26,11 +26,12 @@ export function filterByCategory<T extends Pick<Product, "category">>(
   return list.filter((p) => p.category === category);
 }
 
-const vnd = new Intl.NumberFormat("vi-VN", {
+// DummyJSON returns prices in USD.
+const usd = new Intl.NumberFormat("en-US", {
   style: "currency",
-  currency: "VND",
+  currency: "USD",
 });
 
 export function formatPrice(price: number): string {
-  return vnd.format(price);
+  return usd.format(price);
 }
