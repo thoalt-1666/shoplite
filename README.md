@@ -9,7 +9,7 @@ A front-end learning project built progressively — same shop idea, different t
 | `v1-html/`  | HTML + CSS    | In progress |
 | `v2-js/`    | + JavaScript  | Planned     |
 | `v3-ts/`    | + TypeScript  | Planned     |
-| `v4-react/` | React         | Planned     |
+| `v4-react/` | React + Tailwind | In progress |
 | `v5-next/`  | Next.js       | Planned     |
 
 ## v1-html
@@ -19,3 +19,16 @@ A front-end learning project built progressively — same shop idea, different t
 - `assets/` — images, icons
 
 Open `v1-html/index.html` in a browser, or use **Live Server** (VS Code) for auto-reload.
+
+## v4-react
+
+Vite + React + TypeScript + Tailwind v4 (qua `@tailwindcss/vite`, import trong `src/styles.css`).
+
+- `src/types.ts` — `Product`, `CartItem`, `ProductListItem` (mang từ v3-ts sang)
+- `src/data.ts` — data hardcode (port từ `v2-js/data.js`)
+- `src/products.ts` — hàm thuần: lọc / sắp xếp / `formatPrice`
+- `src/components/` — `Header`, `ProductCard`, `ProductList`, `Footer`
+
+```bash
+cd v4-react && npm install && npm run dev
+```
